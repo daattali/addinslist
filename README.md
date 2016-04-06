@@ -4,7 +4,7 @@ One of the main problems right now with RStudio addins is discoverability: there
 
 If you made a cool RStudio addin, feel free to make a pull request to add it to the list.  
 
-<!-- table:start -->
+<!-- table:addinslist -->
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
@@ -22,5 +22,3 @@ If you made a cool RStudio addin, feel free to make a pull request to add it to 
 | Hist Add-In | Interactively create histograms with ggplot2 and obtain the R Code | [limoaddin](https://github.com/Stan125/limoaddin) | :x: | [Stanislaus Stadlmann](https://github.com/Stan125) | | |
 | rpivotGadget | Add-in wrapper around the rpivotTable HTML widget | [rpivotGadget](https://github.com/dkilfoyle/rpivotGadget) | :x: | [Dean Kilfoyle](https://github.com/dkilfoyle) | | |
 | Addin Manager | Install and remove addins | [addinmanager](https://github.com/csgillespie/addinmanager) | :x: | [Colin Gillespie](http://www.mas.ncl.ac.uk/~ncsg3/) |  | [Blog post](https://csgillespie.wordpress.com/2016/04/01/rstudio-addins-manager/)
-
-<!-- table:end -->
