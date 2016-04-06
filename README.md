@@ -4,6 +4,8 @@ One of the main problems right now with RStudio addins is discoverability: there
 
 If you made a cool RStudio addin, feel free to make a pull request to add it to the list.  
 
+<!-- table:start -->
+
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
 | Colour picker | Lets you easily select colours | [shinyjs](https://github.com/daattali/shinyjs) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [screenshot](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourpickerscrnshot.png), [demo GIF](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif) | |
@@ -20,3 +22,5 @@ If you made a cool RStudio addin, feel free to make a pull request to add it to 
 | Hist Add-In | Interactively create histograms with ggplot2 and obtain the R Code | [limoaddin](https://github.com/Stan125/limoaddin) | :x: | [Stanislaus Stadlmann](https://github.com/Stan125) | | |
 | rpivotGadget | Add-in wrapper around the rpivotTable HTML widget | [rpivotGadget](https://github.com/dkilfoyle/rpivotGadget) | :x: | [Dean Kilfoyle](https://github.com/dkilfoyle) | | |
 | Addin Manager | Install and remove addins | [addinmanager](https://github.com/csgillespie/addinmanager) | :x: | [Colin Gillespie](http://www.mas.ncl.ac.uk/~ncsg3/) |  | [Blog post](https://csgillespie.wordpress.com/2016/04/01/rstudio-addins-manager/)
+
+<!-- table:end -->
