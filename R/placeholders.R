@@ -48,7 +48,7 @@ shinyjs.swal = function(params) {
       includeScript(file.path(resourcePath, "sweetalert.min.js")),
       includeCSS(file.path(resourcePath, "sweetalert.min.css"))
     ),
-    shinyjs::extendShinyjs(text = jscode),
+    shinyjs::extendShinyjs(text = jscode, functions = c("confirmation", "swal")),
     shinyjs::inlineCSS("
                        #addinstable tbody tr { cursor: pointer; }
                        #addinstable tbody tr:hover,
@@ -154,7 +154,7 @@ shinyjs.swal = function(params) {
       idx <- input$addinstable_rows_selected
       pkg <- values$addins_data[idx, 'internal_pkgname']
       if (pkg == "shinyjs") {
-        shinyjs::js$swal(text = "Cannot uninstall shinyjs, it is required for the current app to work",
+        shinyjs::js$swal(title = "", text = "Cannot uninstall shinyjs, it is required for the current app to work",
                          type = "info")
         return()
       }    
