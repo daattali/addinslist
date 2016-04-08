@@ -69,7 +69,24 @@ checkmark <- icon("check")
 
 ui <- fluidPage(
   shinyjs::useShinyjs(),
-  shinyjs::inlineCSS("#addinstable tr:hover { background: lightgreen;}"),
+  shinyjs::inlineCSS("#addinstable tr:hover { background: lightgreen;}
+#installing-overlay{
+position: absolute;
+    top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         background: rgba(0,0,0,0.8);text-align: center;
+         z-index: 2;}
+#installing-msg {
+    margin-top: 100px;
+    font-size: 37px;
+    color: white;
+    font-weight: bold;
+}
+                     "),
+  shinyjs::hidden(div(id = "installing-overlay",
+                      div(id = "installing-msg", "Installing...", icon("spinner", class="fa-spin")))),
   div(style = "display: none;", icon("check")),
   DT::dataTableOutput("addinstable")
 )
@@ -80,17 +97,32 @@ server <- function(input, output, session) {
   values$installed <- pkgs$installed
   
   observeEvent(input$addinstable_rows_selected, {
-    idx <- which(out$Name == input$addinstable_rows_selected)
-    if (!values$installed[idx]) {
-      if(pkgs$oncran[idx]) {
-        install.packages(pkgs$package[idx])
-      } else {
-        devtools::install_github(pkgs$github[idx])
-      }
-      values$installed[idx] <- TRUE
-    } else {
-      shinyjs::info("Uninstalling isn't supported yet!")
+    idx <- input$addinstable_rows_selected
+    
+    if (pkgs$package[idx] == "shinyjs") {
+      shinyjs::info("Cannot uninstall shinyjs, it is required for the current app to work")
+      return()
     }
+    
+    if (!values$installed[idx]) {
+      shinyjs::show("installing-overlay")
+      tryCatch({
+        if(pkgs$oncran[idx]) {
+          install.packages(pkgs$package[idx])
+        } else {
+          devtools::install_github(pkgs$github[idx])
+        }
+        values$installed[idx] <- TRUE
+      }, error = function(err) {
+        shinyjs::info(paste0("Error: ", err$message))
+      })
+      shinyjs::hide("installing-overlay")
+    } else {
+      #shinyjs::info("Uninstalling isn't supported yet!")
+      remove.packages(pkgs$package[idx])
+      values$installed[idx] <- FALSE
+    }
+    
   })
   
   output$addinstable <- DT::renderDataTable({
@@ -108,10 +140,10 @@ server <- function(input, output, session) {
       initComplete = DT::JS(
         "function(settings, json) {",
         "$.each(", pkgsArray, ", function(x, y){$($('tr')[y]).css('background', 'lightgreen');});",
-        "}"))
+        "}")),
+      selection = "single"
     )
   })
-
 }
 
 shinyApp(ui = ui, server = server)
