@@ -1,3 +1,5 @@
+# NOTE: I'm getting a lot of emails from people regarding this repo/package, which is awesome! BUT I'm graduating within a couple weeks so I have to put everything on pause, so please don't contact me or expect a reply until the end of April. Please do share all comments and ideas with me once May comes around!
+
 # List of useful RStudio addins made by useRs
 
 One of the main problems right now with RStudio addins is discoverability: there's just no easy way to find addins. This repo can help in three ways: if you want to browse for useful addins, if you want to showcase your addin, or if you want to look at how others are implementing addins to get ideas for developing your own (since there aren’t too many resources or examples yet, it could be useful to inspect other people’s code).
