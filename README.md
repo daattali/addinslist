@@ -28,5 +28,8 @@ If you made a cool RStudio addin, feel free to make a pull request to add it to 
 | Levels ordering | Interactively generate code to reorder factor levels | [questionr](https://github.com/juba/questionr) | :white_check_mark: | [Julien Barnier](https://github.com/juba/) | [Demo video](https://video.twimg.com/ext_tw_video/709748628911484928/pu/vid/874x720/ufNktJLtpIdP2fem.mp4) | |
 | Variable cutting | Interactively generate `cut()` code  | [questionr](https://github.com/juba/questionr) | :white_check_mark: | [Julien Barnier](https://github.com/juba/) | [Demo video](https://video.twimg.com/ext_tw_video/709749076225560576/pu/vid/874x720/jzl490qfQaJIJjWC.mp4) | |
 | ARIMA Picker | Interactively pick ARIMA parameters | [arimaUI](https://github.com/YvesCR/arimaUI) |  :x: | [Yves crutain](https://github.com/YvesCR) | | [blog post](http://data-laborer.eu/2016/04/ARIMA_Picker.html) |
+| Insert %==% | Insert the infix operator %==% from testit. | [testit](https://github.com/yihui/testit) |  :white_check_mark: | [Yihui Xie](https://github.com/yihui) | | |
+| Input LaTeX Math | Input math expressions via the MathQuill library. | [bookdown](https://github.com/rstudio/bookdown) |  :white_check_mark: | [RStudio](https://github.com/rstudio/) | | |
+| Preview Book | Run bookdown::serve_book() to live preview a book. | [bookdown](https://github.com/rstudio/bookdown) |  :white_check_mark: | [RStudio](https://github.com/rstudio/) | | |
 
 
