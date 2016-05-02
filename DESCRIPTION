@@ -1,16 +1,17 @@
-Package: rstudioaddins 
-Title: Description
-Version: 0.0.0.9000
+Package: addinslist 
+Title: Discover and Install Useful RStudio Addins
+Version: 0.0.0.9001
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: TODO
-URL: https://github.com/daattali/rstudio-addins
-BugReports: https://github.com/daattali/rstudio-addins/issues
+URL: https://github.com/daattali/addinslist
+BugReports: https://github.com/daattali/addinslist/issues
 Depends:
     R (>= 3.1.0)
 Imports:
-    DT (>= 0.1.16),
+    DT (>= 0.1.47),
     shiny (>= 0.13.2),
+    shinyjs (>= 0.6)
     rappdirs (>= 0.3.1)
 Remotes:  rstudio/DT
 License: MIT + file LICENSE

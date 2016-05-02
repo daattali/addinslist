@@ -1,6 +1,6 @@
-# List of useful RStudio addins made by useRs
+# Discover and install useful RStudio addins
 
-One of the main problems right now with RStudio addins is discoverability: there's just no easy way to find addins. This repo can help in three ways: if you want to browse for useful addins, if you want to showcase your addin, or if you want to look at how others are implementing addins to get ideas for developing your own (since there aren’t too many resources or examples yet, it could be useful to inspect other people’s code).
+One of the main problems right now with RStudio addins is discoverability: there's just no easy way to find addins. This package can help in three ways: if you want to browse for useful addins, if you want to showcase your addin, or if you want to look at how others are implementing addins to get ideas for developing your own (since there aren’t too many resources or examples yet, it could be useful to inspect other people’s code).
 
 If you made a cool RStudio addin, feel free to make a pull request to add it to the list.  
 
