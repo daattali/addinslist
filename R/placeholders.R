@@ -1,6 +1,5 @@
 
-# THIS CODE IS TERRIBLE AND WAS DONE IN AN HOUR AS A PROOF OF CONCEPT
-# DO NOT JUDGE ME!
+# TODO if list hasn't been loaded, show the gadget immediately and show "loading" message
 
 #' @export
 #' @import shiny
@@ -9,6 +8,28 @@ gadget <- function() {
   resourcePath <- system.file("lib", "sweetalert-1.0.1", package = "addinslist")
   
   jscode <- "
+  shinyjs.init = function() {
+    $(document).keyup(function(e) {
+      if (e.keyCode == 27) {
+        Shiny.onInputChange('cancel', 1);
+      }
+    });
+
+    $('#addinstable').on('click', 'tbody tr.pkgrow', function(event) {
+      var target = event.target;
+      var row;
+      if (target.nodeName == 'A') {
+        return;
+      } else if (target.nodeName == 'TR') {
+        row = $(target);
+      } else {
+        row = $($(target).closest('tr'));
+      }
+      var pkgname = row.data('pkgname');
+      Shiny.onInputChange('rowclick', [pkgname, Math.random()]);
+    });
+  };
+
 shinyjs.swal = function(params) { 
   var defaultParams = {
   title : null,
@@ -39,7 +60,7 @@ shinyjs.swal = function(params) {
   }, function(){
   Shiny.onInputChange(params.type, {random: Math.random(), package : params.package}); }
   );
-  }
+  };
   "
   
   ui <- fluidPage(
@@ -50,8 +71,8 @@ shinyjs.swal = function(params) {
     ),
     shinyjs::extendShinyjs(text = jscode, functions = c("confirmation", "swal")),
     shinyjs::inlineCSS("
-                       #addinstable tbody tr { cursor: pointer; }
-                       #addinstable tbody tr:hover,
+                       #addinstable tbody tr.pkgrow { cursor: pointer; }
+                       #addinstable tbody tr.pkgrow:hover,
                        #addinstable tbody tr.installed { background: lightgreen;}
                        #addinstable tbody tr.installed:hover { background: #EE9C90;}
                        #installing-overlay{
@@ -78,7 +99,7 @@ shinyjs.swal = function(params) {
     div(id = "last-updated",
       span("List was last updated ",
            span(id = "updated_time",
-                as.integer(Sys.time() - .addinsrepo_globals$lastrefresh),
+                round(Sys.time() - .addinsrepo_globals$lastrefresh),
                 units(Sys.time() - .addinsrepo_globals$lastrefresh), "ago")),
       actionLink("refresh", label = "", icon = icon("refresh"), title = "Refresh")
     ),
@@ -150,15 +171,14 @@ shinyjs.swal = function(params) {
       shinyjs::hide("installing-overlay")
     })
     
-    observeEvent(input$addinstable_rows_selected, {
-      idx <- input$addinstable_rows_selected
-      pkg <- values$addins_data[idx, 'internal_pkgname']
+    observeEvent(input$rowclick, {
+      pkg <- input$rowclick[1]
       if (pkg == "shinyjs") {
         shinyjs::js$swal(title = "", text = "Cannot uninstall shinyjs, it is required for the current app to work",
                          type = "info")
         return()
       }    
-      
+      idx <- which(values$addins_data$internal_pkgname == pkg)[1]
       if (input$confirmation) {
         if (!values$addins_data[idx, 'internal_installed']) {
           shinyjs::js$confirmation("install", pkg)
@@ -179,7 +199,7 @@ shinyjs.swal = function(params) {
       
       DT::datatable(
         values$addins_data,
-        escape = FALSE, rownames = FALSE, selection = "single",
+        escape = FALSE, rownames = FALSE, selection = "none",
         class = 'stripe',
         options = list(
           dom = "ftlp",
@@ -204,10 +224,17 @@ shinyjs.swal = function(params) {
           #   "}"),
           searching = TRUE,
           paging = FALSE,
-          rowCallback = JS(
-            "function(row, data) {",
-            "if (data[", ncol(values$addins_data) - 1, "] == true) $(row).addClass('installed');",
-            "}")
+          rowCallback = DT::JS("
+            function(row, data) {
+              $(row).addClass('pkgrow');
+              var pkgname = data[", .addinsrepo_globals$packageNameColumnId - 1 ,"];
+              $(row).attr('data-pkgname', pkgname);
+              var isinstalled = data[", ncol(values$addins_data) - 1, "].toString().trim().toLowerCase();
+              if (isinstalled == 'true') {
+                $(row).addClass('installed');
+              }
+            }
+          ")
         )
       )
     })
@@ -264,9 +291,9 @@ update_addins_list <- function() {
   
   cranColumnId <- which(grepl("cran", headerNames, ignore.case = TRUE))
   packageColumnId <- which(grepl("package", headerNames, ignore.case = TRUE))
+  .addinsrepo_globals$headerNames <- headerNames
   .addinsrepo_globals$cranColumnId <- cranColumnId
   .addinsrepo_globals$packageColumnId <- packageColumnId
-  .addinsrepo_globals$headerNames <- headerNames
   
   rows <- xml2::xml_find_all(html, "//tbody/tr")
   
@@ -303,6 +330,9 @@ update_addins_list <- function() {
   out$internal_installed <- as.logical(out$internal_installed)
   
   .addinsrepo_globals$addins_list <- out
+  
+  packageNameColumnId <- which(colnames(out) == "internal_pkgname")
+  .addinsrepo_globals$packageNameColumnId <- packageNameColumnId
 }
 
 update_addins_installed_field <- function() {
