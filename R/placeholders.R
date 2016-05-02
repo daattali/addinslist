@@ -6,7 +6,7 @@
 #' @import shiny
 gadget <- function() {
   update_addins_installed_field()
-  resourcePath <- system.file("lib", "sweetalert-1.0.1", package = "rstudioaddins")
+  resourcePath <- system.file("lib", "sweetalert-1.0.1", package = "addinslist")
   
   jscode <- "
 shinyjs.swal = function(params) { 
@@ -182,7 +182,7 @@ shinyjs.swal = function(params) {
         escape = FALSE, rownames = FALSE, selection = "single",
         class = 'stripe',
         options = list(
-          dom = "",
+          dom = "ftlp",
           columnDefs = list(
             list(
               targets = .addinsrepo_globals$cranColumnId - 1,
@@ -202,7 +202,7 @@ shinyjs.swal = function(params) {
           #   "function(settings, json) {",
           #   "$.each(", pkgsArray, ", function(x, y){$($('tr')[y]).css('background', 'lightgreen');});",
           #   "}"),
-          searching = FALSE,
+          searching = TRUE,
           paging = FALSE,
           rowCallback = JS(
             "function(row, data) {",
