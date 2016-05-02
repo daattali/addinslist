@@ -1,12 +1,8 @@
-# NOTE: I'm getting a lot of emails from people regarding this repo/package, which is awesome! BUT I'm graduating within a couple weeks so I have to put everything on pause, so please don't contact me or expect a reply until the end of April. Please do share all comments and ideas with me once May comes around!
-
 # List of useful RStudio addins made by useRs
 
 One of the main problems right now with RStudio addins is discoverability: there's just no easy way to find addins. This repo can help in three ways: if you want to browse for useful addins, if you want to showcase your addin, or if you want to look at how others are implementing addins to get ideas for developing your own (since there aren’t too many resources or examples yet, it could be useful to inspect other people’s code).
 
 If you made a cool RStudio addin, feel free to make a pull request to add it to the list.  
-
-<!-- table:addinslist -->
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
@@ -23,12 +19,10 @@ If you made a cool RStudio addin, feel free to make a pull request to add it to 
 | Document This | Auto-generate Roxygen skeletons for functions and data | [docthis](https://github.com/mdlincoln/docthis) | :x: | [Matthew Lincoln](http://matthewlincoln.net/) | | |
 | Hist Add-In | Interactively create histograms with ggplot2 and obtain the R Code | [limoaddin](https://github.com/Stan125/limoaddin) | :x: | [Stanislaus Stadlmann](https://github.com/Stan125) | | |
 | rpivotGadget | Add-in wrapper around the rpivotTable HTML widget | [rpivotGadget](https://github.com/dkilfoyle/rpivotGadget) | :x: | [Dean Kilfoyle](https://github.com/dkilfoyle) | | |
-| Addin Manager | Install and remove addins | [addinmanager](https://github.com/csgillespie/addinmanager) | :x: | [Colin Gillespie](http://www.mas.ncl.ac.uk/~ncsg3/) |  | [Blog post](https://csgillespie.wordpress.com/2016/04/01/rstudio-addins-manager/) |
+| Addin Manager | Install and remove addins | [addinmanager](https://github.com/csgillespie/addinmanager) | :x: | [Colin Gillespie](http://www.mas.ncl.ac.uk/~ncsg3/) | [Blog post](https://csgillespie.wordpress.com/2016/04/01/rstudio-addins-manager/) | |
 | Levels recoding | Interactively generate code to edit factor levels | [questionr](https://github.com/juba/questionr) | :white_check_mark: | [Julien Barnier](https://github.com/juba/) | [Demo video](https://video.twimg.com/ext_tw_video/709748109992185856/pu/vid/874x720/bLPgibM_9K_2pRHa.mp4) | |
 | Levels ordering | Interactively generate code to reorder factor levels | [questionr](https://github.com/juba/questionr) | :white_check_mark: | [Julien Barnier](https://github.com/juba/) | [Demo video](https://video.twimg.com/ext_tw_video/709748628911484928/pu/vid/874x720/ufNktJLtpIdP2fem.mp4) | |
 | Variable cutting | Interactively generate `cut()` code  | [questionr](https://github.com/juba/questionr) | :white_check_mark: | [Julien Barnier](https://github.com/juba/) | [Demo video](https://video.twimg.com/ext_tw_video/709749076225560576/pu/vid/874x720/jzl490qfQaJIJjWC.mp4) | |
-| ARIMA Picker | Interactively pick ARIMA parameters | [arimaUI](https://github.com/YvesCR/arimaUI) |  :x: | [Yves crutain](https://github.com/YvesCR) | | [blog post](http://data-laborer.eu/2016/04/ARIMA_Picker.html) |
-| Input LaTeX Math | Input math expressions via the MathQuill library. | [bookdown](https://github.com/rstudio/bookdown) |  :x: | [RStudio](https://github.com/rstudio/) | | |
-| Preview R-markdown Book | Run bookdown::serve_book() to live preview a book. | [bookdown](https://github.com/rstudio/bookdown) |  :x: | [RStudio](https://github.com/rstudio/) | | |
-
-
+| ARIMA Picker | Interactively pick ARIMA parameters | [arimaUI](https://github.com/YvesCR/arimaUI) |  :x: | [Yves crutain](https://github.com/YvesCR) | [blog post](http://data-laborer.eu/2016/04/ARIMA_Picker.html) | |
+| Input LaTeX Math | Input math expressions via the MathQuill library | [bookdown](https://github.com/rstudio/bookdown) |  :x: | [RStudio](https://github.com/rstudio/) | | |
+| Preview R-markdown Book | Run bookdown's serve_book() to live preview a book | [bookdown](https://github.com/rstudio/bookdown) |  :x: | [RStudio](https://github.com/rstudio/) | | |
