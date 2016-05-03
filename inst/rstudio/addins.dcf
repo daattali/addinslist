@@ -1,0 +1,4 @@
+Name: Browse RStudio addins
+Description: Browse and install RStudio addins
+Binding: gadget
+Interactive: true

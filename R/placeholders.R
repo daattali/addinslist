@@ -58,7 +58,7 @@ shinyjs.swal = function(params) {
   confirmButtonColor: params.colour, confirmButtonText: 'Yes, ' + params.type + ' away!',
   closeOnConfirm: true, html: true
   }, function(){
-  Shiny.onInputChange(params.type, {random: Math.random(), package : params.package}); }
+  Shiny.onInputChange(params.type, [params.package, Math.random()]); }
   );
   };
   "
@@ -71,6 +71,30 @@ shinyjs.swal = function(params) {
     ),
     shinyjs::extendShinyjs(text = jscode, functions = c("confirmation", "swal")),
     shinyjs::inlineCSS("
+.container-fluid {
+padding: 0;
+margin: 0;
+}
+#top-section {
+background: #fdfdfd;
+    padding: 5px 15px;
+border-bottom: 1px solid #bbb;
+}
+#title {
+margin-top: 0;
+text-align: center;
+font-weight: bold;
+}
+#addinstable { padding: 15px; background: #FBFBFB; font-size: 16px; }
+#addinstable table {
+border: 1px solid #666;
+background:white;}
+#addinstable .dataTables_info {
+font-weight: bold;
+padding: 0;
+margin-top: 5px;
+margin-bottom: 10px;
+}
                        #addinstable tbody tr.pkgrow { cursor: pointer; }
                        #addinstable tbody tr.pkgrow:hover,
                        #addinstable tbody tr.installed { background: lightgreen;}
@@ -90,23 +114,32 @@ shinyjs.swal = function(params) {
                        font-weight: bold;
                        }
 #refresh { margin-left: 5px; }
-#last-updated {float: right;}
+#last-updated {
+position: absolute;
+top: 10px;
+font-style: italic;
+right: 15px;
+}
                        "),
     shinyjs::hidden(div(id = "installing-overlay",
                         div(id = "installing-msg",
                             span(id = "overlay-text"),
                             icon("spinner", class="fa-spin")))),
-    div(id = "last-updated",
-      span("List was last updated ",
-           span(id = "updated_time",
-                round(Sys.time() - .addinsrepo_globals$lastrefresh),
-                units(Sys.time() - .addinsrepo_globals$lastrefresh), "ago")),
-      actionLink("refresh", label = "", icon = icon("refresh"), title = "Refresh")
+    div(
+      id = "top-section",
+      h2(id = "title", "RStudio addins"),
+      div(id = "last-updated",
+        span("List was last updated ",
+             span(id = "updated_time",
+                  round(Sys.time() - .addinsrepo_globals$lastrefresh),
+                  units(Sys.time() - .addinsrepo_globals$lastrefresh), "ago")),
+        actionLink("refresh", label = "", icon = icon("refresh"), title = "Refresh")
+      ),
+      checkboxInput("confirmation", "Ask for confirmation before installing or uninstalling a package", TRUE, width = "auto"),
+      selectInput("download_from", NULL,
+                  c("Download from CRAN when possible" = "cran",
+                    "Always download from GitHub" = "github"))
     ),
-    selectInput("download_from", NULL,
-                c("Download from CRAN when possible" = "cran",
-                  "Always download from GitHub" = "github")),
-    checkboxInput("confirmation", "Ask for confirmation before installing or uninstalling a package", TRUE),
     div(style = "display: none;", icon("check")),
     DT::dataTableOutput("addinstable")
     )
@@ -116,7 +149,7 @@ shinyjs.swal = function(params) {
     values <- reactiveValues(addins_data = NULL,
                              install_pkg = NULL, uninstall_pkg = NULL)
     values$addins_data <- .addinsrepo_globals$addins_list
-    
+    #update_addins_file()
     observeEvent(input$refresh, {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", "Refreshing list...")
@@ -129,11 +162,11 @@ shinyjs.swal = function(params) {
     })
     
     observeEvent(input$install, {
-      values$install_pkg <- input$install$package
+      values$install_pkg <- input$install[1]
     })
     
     observeEvent(input$uninstall, {
-      values$uninstall_pkg <- input$uninstall$package
+      values$uninstall_pkg <- input$uninstall[1]
     })
     
     observeEvent(values$install_pkg, {
@@ -153,6 +186,7 @@ shinyjs.swal = function(params) {
       })
       
       shinyjs::hide("installing-overlay")
+      values$install_pkg <- NULL
       
       update_addins_installed_field()
       values$addins_data <- .addinsrepo_globals$addins_list
@@ -160,7 +194,7 @@ shinyjs.swal = function(params) {
     
     observeEvent(values$uninstall_pkg, {
       shinyjs::show("installing-overlay")
-      shinyjs::html("overlay-text", paste0("Uninstalling ", values$install_pkg, "..."))
+      shinyjs::html("overlay-text", paste0("Uninstalling ", values$uninstall_pkg, "..."))
       
       idx <- which(values$addins_data$internal_pkgname == values$uninstall_pkg)[1]
       remove.packages(values$addins_data[idx, 'internal_pkgname'])
@@ -168,6 +202,7 @@ shinyjs.swal = function(params) {
       update_addins_installed_field()
       values$addins_data <- .addinsrepo_globals$addins_list
       
+      values$uninstall_pkg <- NULL
       shinyjs::hide("installing-overlay")
     })
     
@@ -202,7 +237,16 @@ shinyjs.swal = function(params) {
         escape = FALSE, rownames = FALSE, selection = "none",
         class = 'stripe',
         options = list(
-          dom = "ftlp",
+          dom = "iftlp",
+          language = list(
+            zeroRecords = "No addins found",
+            info = "_TOTAL_ addins found",
+            infoFiltered = "",
+            infoPostFix = " (click any row to install/uninstall the addin's package)",
+            infoEmpty = "No addins found",
+            search = "",
+            searchPlaceholder = "Search..."
+          ),
           columnDefs = list(
             list(
               targets = .addinsrepo_globals$cranColumnId - 1,
@@ -241,7 +285,7 @@ shinyjs.swal = function(params) {
   }
   
   app <- shinyApp(ui = ui, server = server)
-  viewer <- dialogViewer("RStudio addins installer", width = 1000, height = 800)
+  viewer <- dialogViewer("Browse and install RStudio addins", width = 1200, height = 900)
   runGadget(app, viewer = viewer, stopOnCancel = TRUE)
 }
 
