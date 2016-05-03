@@ -1,293 +1,7 @@
 
 # TODO if list hasn't been loaded, show the gadget immediately and show "loading" message
 
-#' @export
-#' @import shiny
-gadget <- function() {
-  update_addins_installed_field()
-  resourcePath <- system.file("lib", "sweetalert-1.0.1", package = "addinslist")
-  
-  jscode <- "
-  shinyjs.init = function() {
-    $(document).keyup(function(e) {
-      if (e.keyCode == 27) {
-        Shiny.onInputChange('cancel', 1);
-      }
-    });
 
-    $('#addinstable').on('click', 'tbody tr.pkgrow', function(event) {
-      var target = event.target;
-      var row;
-      if (target.nodeName == 'A') {
-        return;
-      } else if (target.nodeName == 'TR') {
-        row = $(target);
-      } else {
-        row = $($(target).closest('tr'));
-      }
-      var pkgname = row.data('pkgname');
-      Shiny.onInputChange('rowclick', [pkgname, Math.random()]);
-    });
-  };
-
-shinyjs.swal = function(params) { 
-  var defaultParams = {
-  title : null,
-  text : null,
-  type : null
-  };
-  params = shinyjs.getParams(params, defaultParams);
-  swal(params);
-};
-  
-  shinyjs.confirmation = function(params) { 
-  var defaultParams = {
-  type : null,
-  package : null 
-  };
-  params = shinyjs.getParams(params, defaultParams);
-  if (params.type == 'install') {
-  params.colour = 'green';
-  } else {
-  params.colour = '#DD6B55';
-  }
-  
-  swal({
-  title: 'Are you sure you want to <strong>' + params.type + ' ' + params.package + '</strong>?',
-  type: 'warning', showCancelButton: true,
-  confirmButtonColor: params.colour, confirmButtonText: 'Yes, ' + params.type + ' away!',
-  closeOnConfirm: true, html: true
-  }, function(){
-  Shiny.onInputChange(params.type, [params.package, Math.random()]); }
-  );
-  };
-  "
-  
-  ui <- fluidPage(
-    shinyjs::useShinyjs(),
-    tags$head(
-      includeScript(file.path(resourcePath, "sweetalert.min.js")),
-      includeCSS(file.path(resourcePath, "sweetalert.min.css"))
-    ),
-    shinyjs::extendShinyjs(text = jscode, functions = c("confirmation", "swal")),
-    shinyjs::inlineCSS("
-.container-fluid {
-padding: 0;
-margin: 0;
-}
-#top-section {
-background: #fdfdfd;
-    padding: 5px 15px;
-border-bottom: 1px solid #bbb;
-}
-#title {
-margin-top: 0;
-text-align: center;
-font-weight: bold;
-}
-#addinstable { padding: 15px; background: #FBFBFB; font-size: 16px; }
-#addinstable table {
-border: 1px solid #666;
-background:white;}
-#addinstable .dataTables_info {
-font-weight: bold;
-padding: 0;
-margin-top: 5px;
-margin-bottom: 10px;
-}
-                       #addinstable tbody tr.pkgrow { cursor: pointer; }
-                       #addinstable tbody tr.pkgrow:hover,
-                       #addinstable tbody tr.installed { background: lightgreen;}
-                       #addinstable tbody tr.installed:hover { background: #EE9C90;}
-                       #installing-overlay{
-                       position: fixed;
-                       top: 0;
-                       bottom: 0;
-                       left: 0;
-                       right: 0;
-                       background: rgba(0,0,0,0.8);text-align: center;
-                       z-index: 2;}
-                       #installing-msg {
-                       margin-top: 100px;
-                       font-size: 37px;
-                       color: white;
-                       font-weight: bold;
-                       }
-#refresh { margin-left: 5px; }
-#last-updated {
-position: absolute;
-top: 10px;
-font-style: italic;
-right: 15px;
-}
-                       "),
-    shinyjs::hidden(div(id = "installing-overlay",
-                        div(id = "installing-msg",
-                            span(id = "overlay-text"),
-                            icon("spinner", class="fa-spin")))),
-    div(
-      id = "top-section",
-      h2(id = "title", "RStudio addins"),
-      div(id = "last-updated",
-        span("List was last updated ",
-             span(id = "updated_time",
-                  round(Sys.time() - .addinsrepo_globals$lastrefresh),
-                  units(Sys.time() - .addinsrepo_globals$lastrefresh), "ago")),
-        actionLink("refresh", label = "", icon = icon("refresh"), title = "Refresh")
-      ),
-      checkboxInput("confirmation", "Ask for confirmation before installing or uninstalling a package", TRUE, width = "auto"),
-      selectInput("download_from", NULL,
-                  c("Download from CRAN when possible" = "cran",
-                    "Always download from GitHub" = "github"))
-    ),
-    div(style = "display: none;", icon("check")),
-    DT::dataTableOutput("addinstable")
-    )
-  
-  server <- function(input, output, session) {
-    
-    values <- reactiveValues(addins_data = NULL,
-                             install_pkg = NULL, uninstall_pkg = NULL)
-    values$addins_data <- .addinsrepo_globals$addins_list
-    #update_addins_file()
-    observeEvent(input$refresh, {
-      shinyjs::show("installing-overlay")
-      shinyjs::html("overlay-text", "Refreshing list...")
-      
-      update_addins_file()
-      values$addins_data <- .addinsrepo_globals$addins_list
-      shinyjs::html("updated_time", "right now")
-      
-      shinyjs::hide("installing-overlay")
-    })
-    
-    observeEvent(input$install, {
-      values$install_pkg <- input$install[1]
-    })
-    
-    observeEvent(input$uninstall, {
-      values$uninstall_pkg <- input$uninstall[1]
-    })
-    
-    observeEvent(values$install_pkg, {
-      shinyjs::show("installing-overlay")
-      shinyjs::html("overlay-text", paste0("Installing ", values$install_pkg, "..."))
-      
-      idx <- which(values$addins_data$internal_pkgname == values$install_pkg)[1]
-      
-      tryCatch({
-        if(values$addins_data[idx, .addinsrepo_globals$cranColumnId] == TRUE && (input$download_from == "cran")) {
-          install.packages(values$install_pkg)
-        } else {
-          devtools::install_github(values$addins_data$internal_github_repo[idx])
-        }
-      }, error = function(err) {
-        shinyjs::js$swal(title = "Error", text = err$message, type = "error")
-      })
-      
-      shinyjs::hide("installing-overlay")
-      values$install_pkg <- NULL
-      
-      update_addins_installed_field()
-      values$addins_data <- .addinsrepo_globals$addins_list
-    })
-    
-    observeEvent(values$uninstall_pkg, {
-      shinyjs::show("installing-overlay")
-      shinyjs::html("overlay-text", paste0("Uninstalling ", values$uninstall_pkg, "..."))
-      
-      idx <- which(values$addins_data$internal_pkgname == values$uninstall_pkg)[1]
-      remove.packages(values$addins_data[idx, 'internal_pkgname'])
-      
-      update_addins_installed_field()
-      values$addins_data <- .addinsrepo_globals$addins_list
-      
-      values$uninstall_pkg <- NULL
-      shinyjs::hide("installing-overlay")
-    })
-    
-    observeEvent(input$rowclick, {
-      pkg <- input$rowclick[1]
-      if (pkg == "shinyjs") {
-        shinyjs::js$swal(title = "", text = "Cannot uninstall shinyjs, it is required for the current app to work",
-                         type = "info")
-        return()
-      }    
-      idx <- which(values$addins_data$internal_pkgname == pkg)[1]
-      if (input$confirmation) {
-        if (!values$addins_data[idx, 'internal_installed']) {
-          shinyjs::js$confirmation("install", pkg)
-        } else {
-          shinyjs::js$confirmation("uninstall", pkg)
-        }
-      } else {
-        if (!values$addins_data[idx, 'internal_installed']) {
-          values$install_pkg <- pkg
-        } else {
-          values$uninstall_pkg <- pkg
-        }
-      }
-    })
-    
-    output$addinstable <- DT::renderDataTable({
-      #pkgsArray <- paste0("[", paste(which(values$addins_data[, 'internal_installed']), collapse = ","), "]")
-      
-      DT::datatable(
-        values$addins_data,
-        escape = FALSE, rownames = FALSE, selection = "none",
-        class = 'stripe',
-        options = list(
-          dom = "iftlp",
-          language = list(
-            zeroRecords = "No addins found",
-            info = "_TOTAL_ addins found",
-            infoFiltered = "",
-            infoPostFix = " (click any row to install/uninstall the addin's package)",
-            infoEmpty = "No addins found",
-            search = "",
-            searchPlaceholder = "Search..."
-          ),
-          columnDefs = list(
-            list(
-              targets = .addinsrepo_globals$cranColumnId - 1,
-              render = DT::JS(
-                "function(data, type, row, meta) {",
-                "return data === 'TRUE' ?",
-                "'<i class=\"fa fa-check\" style=\"color:green;\"></i>' : ",
-                "'<i class=\"fa fa-times\"></i>';",
-                "}")
-            ),
-            list(
-              targets = seq(length(.addinsrepo_globals$headerNames), ncol(values$addins_data) - 1),
-              visible = FALSE
-            )
-          ),
-          # initComplete = DT::JS(
-          #   "function(settings, json) {",
-          #   "$.each(", pkgsArray, ", function(x, y){$($('tr')[y]).css('background', 'lightgreen');});",
-          #   "}"),
-          searching = TRUE,
-          paging = FALSE,
-          rowCallback = DT::JS("
-            function(row, data) {
-              $(row).addClass('pkgrow');
-              var pkgname = data[", .addinsrepo_globals$packageNameColumnId - 1 ,"];
-              $(row).attr('data-pkgname', pkgname);
-              var isinstalled = data[", ncol(values$addins_data) - 1, "].toString().trim().toLowerCase();
-              if (isinstalled == 'true') {
-                $(row).addClass('installed');
-              }
-            }
-          ")
-        )
-      )
-    })
-  }
-  
-  app <- shinyApp(ui = ui, server = server)
-  viewer <- dialogViewer("Browse and install RStudio addins", width = 1200, height = 900)
-  runGadget(app, viewer = viewer, stopOnCancel = TRUE)
-}
 
 .addinsrepo_globals <- new.env(parent = emptyenv())
 
@@ -297,20 +11,10 @@ right: 15px;
 }
 
 update_addins_file_if_needed <- function() {
-  datapath <- rappdirs::user_data_dir("addinsrepo", "daattali")
-  htmlfile <- file.path(datapath, "addins.html")
-  
-  if (!file.exists(htmlfile)) {
-    update_addins_file()
-    return()
-  }
-  
-  .addinsrepo_globals$lastrefresh <- file.mtime(htmlfile)
-  SECS_IN_DAY <- 60*60*24
-  if (as.numeric(Sys.time() - .addinsrepo_globals$lastrefresh, units = "secs") > SECS_IN_DAY) {
+  if (is_addins_file_outdated()) {
     update_addins_file()
   } else {
-    update_addins_list()
+    update_addins_list() 
   }
 }
 
@@ -383,4 +87,21 @@ update_addins_installed_field <- function() {
   installed_pkgs <- rownames(installed.packages(noCache = TRUE))
   .addinsrepo_globals$addins_list$internal_installed <-
     .addinsrepo_globals$addins_list$internal_pkgname %in% installed_pkgs
+}
+
+is_addins_file_outdated <- function() {
+  datapath <- rappdirs::user_data_dir("addinsrepo", "daattali")
+  htmlfile <- file.path(datapath, "addins.html")
+  
+  if (!file.exists(htmlfile)) {
+    return(TRUE)
+  }
+  
+  .addinsrepo_globals$lastrefresh <- file.mtime(htmlfile)
+  SECS_IN_DAY <- 60*60*24
+  if (as.numeric(Sys.time() - .addinsrepo_globals$lastrefresh, units = "secs") > SECS_IN_DAY) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }  
 }
