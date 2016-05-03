@@ -1,6 +1,6 @@
 Package: addinslist 
 Title: Discover and Install Useful RStudio Addins
-Version: 0.0.0.9001
+Version: 0.1
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Browse through a continuously updated list of existing RStudio 
@@ -10,10 +10,17 @@ BugReports: https://github.com/daattali/addinslist/issues
 Depends:
     R (>= 3.1.0)
 Imports:
+    curl,
+    devtools,
     DT (>= 0.1),
+    miniUI (>= 0.1),
     shiny (>= 0.13.2),
     shinyjs (>= 0.6),
-    rappdirs (>= 0.3.1)
+    rappdirs (>= 0.3.1),
+    rmarkdown,
+    rvest (>= 0.3.1),
+    utils,
+    xml2 (>= 0.1.2)
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr

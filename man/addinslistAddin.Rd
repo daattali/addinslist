@@ -7,7 +7,7 @@
 addinslistAddin()
 }
 \description{
-This addin allows you to interactively browse through the list of exisitng
+This addin allows you to interactively browse through the list of existing
 addins, see which ones you already have installed, and let you
 install/uninstall the corresponding package of each addin. This addin can be
 invoked from RStudio's "Addins" menu.

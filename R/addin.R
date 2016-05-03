@@ -1,6 +1,6 @@
 #' Addin for browsing and installing RStudio addins
 #'
-#' This addin allows you to interactively browse through the list of exisitng
+#' This addin allows you to interactively browse through the list of existing
 #' addins, see which ones you already have installed, and let you
 #' install/uninstall the corresponding package of each addin. This addin can be
 #' invoked from RStudio's "Addins" menu.
@@ -36,10 +36,8 @@ addinslistAddin <- function() {
         id = "top-section",
         h2(id = "title", "RStudio addins"),
         div(id = "last-updated",
-            span("List last updated ",
-                 span(id = "updated_time",
-                      round(Sys.time() - .addinsrepo_globals$lastrefresh),
-                      units(Sys.time() - .addinsrepo_globals$lastrefresh), "ago")),
+            span("Last updated ",
+                 textOutput("updated_time", inline = TRUE)),
             actionLink("refresh", label = "", icon = icon("refresh"), title = "Refresh")
         ),
         checkboxInput(
@@ -60,53 +58,66 @@ addinslistAddin <- function() {
   server <- function(input, output, session) {
     
     # values used throughout the app
-    values <- reactiveValues(addins_data = NULL,
+    values <- reactiveValues(addins_data = NULL, last_refresh = NULL,
                              install_pkg = NULL, uninstall_pkg = NULL)
     
-    if (is_addins_file_outdated()) {
-      shinyjs::show("installing-overlay")
-      shinyjs::html("overlay-text", "Refreshing addins list...")
-      cat("updating..")
-      update_addins_file()
-      cat("done update")
+    # Function to update the addins list and the corresponding reactive values
+    update_addins_list_values <- function(...) {
+      update_addins_list(...)
       values$addins_data <- .addinsrepo_globals$addins_list
-      shinyjs::html("updated_time", "right now")
-      
-      shinyjs::hide("installing-overlay")
-    } else {
-      update_addins_installed_field() 
+      values$last_refresh <- .addinsrepo_globals$last_refresh
     }
-    cat("STARTING NOW")
-    values$addins_data <- .addinsrepo_globals$addins_list
     
-    observeEvent(input$refresh, {
+    # Function to refresh the addins list and show the user a loading message
+    refresh_list <- function() {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", "Refreshing addins list...")
-      
-      update_addins_file()
-      values$addins_data <- .addinsrepo_globals$addins_list
-      shinyjs::html("updated_time", "right now")
-      
+      update_addins_list_values(force = TRUE)
       shinyjs::hide("installing-overlay")
-    })
+    }     
     
+    # When the app starts, ensure the data is up-to-date
+    if (is_addins_file_outdated()) {
+      refresh_list()
+    } else {
+      update_addins_list_values()
+    }
+
+    
+    # Show when the list was last updated
+    output$updated_time <- renderText({
+      if (!is.null(values$last_refresh)) {
+        paste(
+          round(Sys.time() - values$last_refresh),
+          units(Sys.time() - values$last_refresh),
+          "ago"
+        )
+      }
+    })
+  
+    # User wants to refresh the list of addins
+    observeEvent(input$refresh, {
+      refresh_list()
+    })
+  
+    # JS sent a message to Shiny to install/uninstall a package (after user confirm)
     observeEvent(input$install, {
       values$install_pkg <- input$install[1]
     })
-    
     observeEvent(input$uninstall, {
       values$uninstall_pkg <- input$uninstall[1]
     })
     
+    # Install/uninstall a package
     observeEvent(values$install_pkg, {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", paste0("Installing ", values$install_pkg, "..."))
       
+      # Figure out which package to install and attempt to install it
       idx <- which(values$addins_data$internal_pkgname == values$install_pkg)[1]
-      
       tryCatch({
         if(values$addins_data[idx, .addinsrepo_globals$cranColumnId] == TRUE && (input$download_from == "cran")) {
-          install.packages(values$install_pkg)
+          utils::install.packages(values$install_pkg)
         } else {
           devtools::install_github(values$addins_data$internal_github_repo[idx])
         }
@@ -116,25 +127,22 @@ addinslistAddin <- function() {
       
       shinyjs::hide("installing-overlay")
       values$install_pkg <- NULL
-      
-      update_addins_installed_field()
-      values$addins_data <- .addinsrepo_globals$addins_list
+      update_addins_list_values()
     })
-    
     observeEvent(values$uninstall_pkg, {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", paste0("Uninstalling ", values$uninstall_pkg, "..."))
       
+      # Figure out which package to uninstall and do it
       idx <- which(values$addins_data$internal_pkgname == values$uninstall_pkg)[1]
-      remove.packages(values$addins_data[idx, 'internal_pkgname'])
-      
-      update_addins_installed_field()
-      values$addins_data <- .addinsrepo_globals$addins_list
+      utils::remove.packages(values$addins_data[idx, 'internal_pkgname'])
       
       values$uninstall_pkg <- NULL
       shinyjs::hide("installing-overlay")
+      update_addins_list_values()
     })
     
+    # User clicked on a row in the table; need to install/uninstall based on selection
     observeEvent(input$rowclick, {
       pkg <- input$rowclick[1]
       if (pkg == "shinyjs") {
@@ -147,6 +155,8 @@ addinslistAddin <- function() {
                          type = "info")
         return()
       }   
+      
+      # Figure out which package was selected and ask for confirmation/do it
       idx <- which(values$addins_data$internal_pkgname == pkg)[1]
       if (input$confirmation) {
         if (!values$addins_data[idx, 'internal_installed']) {
@@ -163,12 +173,13 @@ addinslistAddin <- function() {
       }
     })
     
+    # Render the table
     output$addinstable <- DT::renderDataTable({
-      #pkgsArray <- paste0("[", paste(which(values$addins_data[, 'internal_installed']), collapse = ","), "]")
-      
       DT::datatable(
         values$addins_data,
-        escape = FALSE, rownames = FALSE, selection = "none",
+        escape = FALSE,
+        rownames = FALSE,
+        selection = "none",
         class = 'stripe',
         options = list(
           dom = "iftlp",
@@ -183,6 +194,7 @@ addinslistAddin <- function() {
           ),
           columnDefs = list(
             list(
+              # show a checkmark or an X in the column for "is on CRAN?"
               targets = .addinsrepo_globals$cranColumnId - 1,
               render = DT::JS(
                 "function(data, type, row, meta) {",
@@ -192,28 +204,31 @@ addinslistAddin <- function() {
                 "}")
             ),
             list(
-              targets = seq(length(.addinsrepo_globals$headerNames), ncol(values$addins_data) - 1),
+              # don't show the internal variables
+              targets = seq(length(.addinsrepo_globals$headerNames),
+                            ncol(values$addins_data) - 1),
               visible = FALSE
             )
           ),
           searching = TRUE,
           paging = FALSE,
-          rowCallback = DT::JS("
-                               function(row, data) {
-                               $(row).addClass('pkgrow');
-                               var pkgname = data[", .addinsrepo_globals$packageNameColumnId - 1 ,"];
-                               $(row).attr('data-pkgname', pkgname);
-                               var isinstalled = data[", ncol(values$addins_data) - 1, "].toString().trim().toLowerCase();
-                               if (isinstalled == 'true') {
-                               $(row).addClass('installed');
-                               }
-                               }
-                               ")
-          )
-          )
-  })
+          rowCallback = DT::JS(
+            # add the package name and whether or not it's installed to every row
+            "function(row, data) {
+              $(row).addClass('pkgrow');
+               var pkgname = data[", .addinsrepo_globals$packageNameColumnId - 1 ,"];
+               $(row).attr('data-pkgname', pkgname);
+               var isinstalled = data[", ncol(values$addins_data) - 1, "].toString().trim().toLowerCase();
+               if (isinstalled == 'true') {
+                 $(row).addClass('installed');
+               }
+            }")
+        )
+      )
+    })
   }
   
+  # Run the addin
   app <- shinyApp(ui = ui, server = server)
   viewer <- dialogViewer("Discover and install useful RStudio addins", width = 1200, height = 900)
   runGadget(app, viewer = viewer, stopOnCancel = TRUE)
