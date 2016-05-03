@@ -6,6 +6,7 @@ If you made a cool RStudio addin, feel free to make a pull request to add it to 
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
+| Browse RStudio addins | Browse and install RStudio addins | [addinslist](https://github.com/daattali/shinyjs) | :x: | [Dean Attali](http://deanattali.com/) | | |
 | Colour picker | Lets you easily select colours | [shinyjs](https://github.com/daattali/shinyjs) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourpickerscrnshot.png), [Demo video](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif) | |
 | ggplot2 Marginal Plots | Add marginal plots to ggplot2 | [ggExtra](https://github.com/daattali/ggExtra) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/ggExtra/master/inst/img/ggmarginal-gadget.png) | |
 | ggplot Theme Assist | Customize your ggplot theme | [ggThemeAssist  ](https://github.com/calligross/ggthemeassist) | :white_check_mark: | [Calli Gross](https://github.com/calligross) | [Demo GIF](https://raw.githubusercontent.com/calligross/ggthemeassist/master/examples/ggThemeAssist2.gif) | |
