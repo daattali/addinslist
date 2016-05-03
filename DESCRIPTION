@@ -3,7 +3,8 @@ Title: Discover and Install Useful RStudio Addins
 Version: 0.0.0.9001
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
-Description: TODO
+Description: Browse through a continuously updated list of existing RStudio 
+    addins and install/uninstall their corresponding packages.
 URL: https://github.com/daattali/addinslist
 BugReports: https://github.com/daattali/addinslist/issues
 Depends:
@@ -13,7 +14,6 @@ Imports:
     shiny (>= 0.13.2),
     shinyjs (>= 0.6),
     rappdirs (>= 0.3.1)
-Remotes:  rstudio/DT
 License: MIT + file LICENSE
 LazyData: true
 VignetteBuilder: knitr
