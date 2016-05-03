@@ -1,8 +1,17 @@
 # Discover and install useful RStudio addins
 
-One of the main problems right now with RStudio addins is discoverability: there's just no easy way to find addins. This package can help in three ways: if you want to browse for useful addins, if you want to showcase your addin, or if you want to look at how others are implementing addins to get ideas for developing your own (since there aren’t too many resources or examples yet, it could be useful to inspect other people’s code).
+[![Build
+Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://travis-ci.org/daattali/addinslist)
+[![CRAN
+version](http://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
 
-If you made a cool RStudio addin, feel free to make a pull request to add it to the list.  
+[RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 and many useRs immediately began writing addins. However, one of the main probelms with addins is discoverability: there's just no easy way to find available addins. Whether you want to know what's out there to see if any addins are useful to you, or if you just want to see examples of addins in order to learn how to develop one yourself, it's hard to merely discover what addins exist.
+
+This package attempts to solve that problem.
+
+The README provides a continuously updated list of RStudio addins (just below).  If you install the `addinslist` package, you will have an addin added to your RStudio called "Browse RStudio addins" which will allow you to interactively browse through the list of addins below, see which ones you already have, and let you install/uninstall the corresponding package to each addin.
+
+If you made a useful RStudio addin, feel free to make a pull request to add it to the list. 
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
