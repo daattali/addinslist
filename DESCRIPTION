@@ -21,9 +21,6 @@ Imports:
     rvest (>= 0.3.1),
     utils,
     xml2 (>= 0.1.2)
-Suggests:
-    knitr
 License: MIT + file LICENSE
 LazyData: true
-VignetteBuilder: knitr
 RoxygenNote: 5.0.1
