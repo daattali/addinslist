@@ -51,7 +51,7 @@ update_addins_list_helper <- function() {
   
   cells <- lapply(rows, function(x){ rvest::html_nodes(x, xpath = ".//td|.//th") })
   
-  installed_pkgs <- rownames(installed.packages(noCache = TRUE))
+  installed_pkgs <- rownames(utils::installed.packages(noCache = TRUE))
   out <- matrix(NA_character_, nrow = length(rows), ncol = length(headerNames) + 3)
   colnames(out) <- c(headerNames, "internal_pkgname", "internal_github_repo",
                      "internal_installed")
@@ -90,7 +90,7 @@ update_addins_list_helper <- function() {
 # When the list objects already exist, sometimes we just need to update 
 # whether or not each package is installed on our system
 update_addins_installed_field <- function() {
-  installed_pkgs <- rownames(installed.packages(noCache = TRUE))
+  installed_pkgs <- rownames(utils::installed.packages(noCache = TRUE))
   .addinsrepo_globals$addins_list$internal_installed <-
     .addinsrepo_globals$addins_list$internal_pkgname %in% installed_pkgs
 }

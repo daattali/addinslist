@@ -5,6 +5,10 @@
 #' install/uninstall the corresponding package of each addin. This addin can be
 #' invoked from RStudio's "Addins" menu.
 #' @export
+#' @examples 
+#' if (interactive()) {
+#'   addinslistAddin()
+#' }
 #' @import shiny
 addinslistAddin <- function() {
   resourcePath <- system.file("gadgets", "addinslist", package = "addinslist")

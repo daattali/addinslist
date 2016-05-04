@@ -12,4 +12,9 @@ addins, see which ones you already have installed, and let you
 install/uninstall the corresponding package of each addin. This addin can be
 invoked from RStudio's "Addins" menu.
 }
+\examples{
+if (interactive()) {
+  addinslistAddin()
+}
+}
 
