@@ -11,9 +11,9 @@ This package solves that problem in two ways. First, it provides a continuously 
 
 ![Addins menu](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addins-menu.png)
 
-If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
-
 <h3 id="addinslist">List of addins</h3>
+
+If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
