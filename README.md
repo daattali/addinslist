@@ -5,15 +5,15 @@ Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://tr
 [![CRAN
 version](http://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
 
-[RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 and many useRs immediately began writing addins. However, one of the main probelms with addins is discoverability: there's just no easy way to find available addins. Whether you want to know what's out there to see if any addins are useful to you, or if you just want to see examples of addins in order to learn how to develop one yourself, it's hard to merely discover what addins exist. This package attempts to solve that problem.
+[RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 to provide anyone with the ability to add "extensions" to RStudio. This feature became popular quickly, but one of the main problems with addins is discoverability: there's just no easy way to find available addins.
 
-**This README provides a continuously updated list of RStudio addins (just below).  If you install the `addinslist` package, you will have an addin added to your RStudio called "Browse RStudio addins" which will allow you to interactively browse through the list of addins below, see which ones you already have installed, and let you install/uninstall the corresponding package of each addin.**
+This package solves that problem by providing a continuously updated list of RStudio addins (below).  If you install the `addinslist` package, you will have an addin added to your RStudio called "Browse RStudio addins".  This addin allows you to interactively browse through the list of addins, see which ones you already have installed, and let you install/uninstall the corresponding package of each addin.
 
-If you made a useful RStudio addin, feel free to make a pull request to add it to the list. 
+If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
-| Browse RStudio addins | Browse and install RStudio addins | [addinslist](https://github.com/daattali/addinslist) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | | |
+| Browse RStudio addins | Browse and install RStudio addins | [addinslist](https://github.com/daattali/addinslist) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addin.png) | |
 | Colour picker | Lets you easily select colours | [shinyjs](https://github.com/daattali/shinyjs) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourpickerscrnshot.png), [Demo video](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif) | |
 | ggplot2 Marginal Plots | Add marginal plots to ggplot2 | [ggExtra](https://github.com/daattali/ggExtra) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/ggExtra/master/inst/img/ggmarginal-gadget.png) | |
 | ggplot Theme Assist | Customize your ggplot theme | [ggThemeAssist  ](https://github.com/calligross/ggthemeassist) | :white_check_mark: | [Calli Gross](https://github.com/calligross) | [Demo GIF](https://raw.githubusercontent.com/calligross/ggthemeassist/master/examples/ggThemeAssist2.gif) | |
