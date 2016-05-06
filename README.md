@@ -5,11 +5,15 @@ Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://tr
 [![CRAN
 version](http://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
 
-[RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 to provide anyone with the ability to add "extensions" to RStudio. This feature became popular quickly, but discoverability was a problem: there's just no easy way to know what addins exist.
+[RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 to provide anyone with the ability to add "extensions" to RStudio. This featuer has quickly become popular, but discoverability was a problem: there's just no easy way to know what addins exist.
 
-This package solves that problem by providing a continuously updated list of RStudio addins (below).  If you install the `addinslist` package, you will have an addin added to your RStudio called "Browse RStudio addins".  This addin allows you to interactively browse through the list of addins, see which ones you already have installed, and let you install/uninstall the corresponding package of each addin.
+This package solves that problem in two ways. First, it provides a continuously updated list of RStudio addins that you can browse through ([below](#addinslist)).  Also, if you install this package (`install.packages('addinslist')`), your RStudio will get populated with a new addin called "Browse RStudio addins". This addin allows you to interactively browse through the list of addins, see which ones you already have installed, and let you install/uninstall the corresponding package of each addin. The following image shows how to access this "addin of addins" in RStudio.
+
+![Addins menu](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addins-menu.png)
 
 If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
+
+<h3 id="addinslist">List of addins</h3>
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
 |------|------|------|------|------|------|------|
