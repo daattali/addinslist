@@ -16,7 +16,7 @@ This package solves that problem in two ways. First, it provides a continuously 
 If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
 
 | Name | Description | Package | On CRAN? | Author | More links | Notes | 
-|------|------|------|------|------|------|------|
+|------|------|------|:----:|------|------|------|
 | Browse RStudio addins | Browse and install RStudio addins | [addinslist](https://github.com/daattali/addinslist) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addin.png) | |
 | Colour picker | Lets you easily select colours | [shinyjs](https://github.com/daattali/shinyjs) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourpickerscrnshot.png), [Demo video](https://raw.githubusercontent.com/daattali/shinyjs/master/inst/img/colourPickerGadget.gif) | |
 | ggplot2 Marginal Plots | Add marginal plots to ggplot2 | [ggExtra](https://github.com/daattali/ggExtra) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/ggExtra/master/inst/img/ggmarginal-gadget.png) | |
