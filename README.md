@@ -48,5 +48,5 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | Quick View Data Frame | Quickly render a data frame, or the code which generates it, in the RStudio View window | [RStudioAddIns](https://github.com/digital-dharma/RStudioAddIns) | :x: | [digital-dharma](https://github.com/digital-dharma) | | |
 | littleboxes | Easily add a boxed title in R scripts | [littleboxes](https://github.com/ThinkRstat/littleboxes) | :x: | [thinkr](http://thinkr.fr) | | |
 | Insert citations | Search a BibTeX-file and insert formatted Markdown citations | [citr](https://github.com/crsh/citr) | :x: | [Frederik Aust](https://github.com/crsh/) | [Demo gif](https://github.com/crsh/citr/raw/master/inst/images/addin_demo.gif) | |
-
+| QRAGadget | A Shiny Gadget for Interactive QRA Visualizations | [QRAGadget](https://github.com/paulgovan/QRAGadget) | :x: | [Paul Govan](https://github.com/paulgovan) | [Screenshot](https://github.com/paulgovan/QRAGadget/blob/master/map.PNG?raw=true) | |
 
