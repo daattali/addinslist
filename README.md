@@ -47,6 +47,6 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | Gotta Read 'Em All| RStudio Add-In to interactively read ALL the data into R| [GREA](https://github.com/Stan125/GREA) | :x: | [Stanislaus Stadlmann](https://github.com/Stan125) | | |
 | Quick View Data Frame | Quickly render a data frame, or the code which generates it, in the RStudio View window | [RStudioAddIns](https://github.com/digital-dharma/RStudioAddIns) | :x: | [digital-dharma](https://github.com/digital-dharma) | | |
 | littleboxes | Easily add a boxed title in R scripts | [littleboxes](https://github.com/ThinkRstat/littleboxes) | :x: | [thinkr](http://thinkr.fr) | | |
-
+| Insert citations | Search a BibTeX-file and insert formatted Markdown citations | [citr](https://github.com/crsh/citr) | :x: | [Frederik Aust](https://github.com/crsh/) | [Demo gif](https://github.com/crsh/citr/raw/master/inst/images/addin_demo.gif) | |
 
 
