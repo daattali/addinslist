@@ -49,4 +49,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | littleboxes | Easily add a boxed title in R scripts | [littleboxes](https://github.com/ThinkRstat/littleboxes) | :x: | [thinkr](http://thinkr.fr) | | |
 | Insert citations | Search a BibTeX-file and insert formatted Markdown citations | [citr](https://github.com/crsh/citr) | :x: | [Frederik Aust](https://github.com/crsh/) | [Demo gif](https://github.com/crsh/citr/raw/master/inst/images/addin_demo.gif) | |
 | QRAGadget | A Shiny Gadget for Interactive QRA Visualizations | [QRAGadget](https://github.com/paulgovan/QRAGadget) | :x: | [Paul Govan](https://github.com/paulgovan) | [Screenshot](https://github.com/paulgovan/QRAGadget/blob/master/map.PNG?raw=true) | |
-
+| assignparams | Evaluate function parameter in global environment | [assignparams](https://github.com/petermeissner/assignparams) | :x: | [Peter Meissner](https://github.com/petermeissner) | [DemoVideo](https://raw.githubusercontent.com/petermeissner/assignparams/master/extra/assign_params.gif) | |
