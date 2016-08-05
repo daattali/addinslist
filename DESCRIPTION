@@ -1,6 +1,6 @@
 Package: addinslist 
 Title: Discover and Install Useful RStudio Addins
-Version: 0.1
+Version: 0.1.1
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Browse through a continuously updated list of existing RStudio 
