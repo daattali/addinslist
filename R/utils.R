@@ -71,7 +71,7 @@ update_addins_list_helper <- function() {
     }
     values[cranColumnId] <- oncran
     pkg <- xml2::xml_text(row[[packageColumnId]])
-    pkg_url <- xml2::xml_attr(xml2::xml_find_one(row[[packageColumnId]], "a"), "href")
+    pkg_url <- xml2::xml_attr(xml2::xml_find_first(row[[packageColumnId]], "a"), "href")
     github <- gsub("(.*)(github.com/)([^/]+)/([^/@#]+)(.*)", "\\3/\\4", pkg_url ) 
     is_installed <- pkg %in% installed_pkgs
     
