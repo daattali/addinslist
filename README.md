@@ -15,7 +15,7 @@ The `addinslist` package solves that problem in two ways:
 
 ![Addins menu](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addins-menu.png)
 
-<h3 id="addinslist-table">List of addins</h3>
+<h2 id="addinslist-table">List of addins</h2>
 
 If you made a useful RStudio addin, feel free to make a pull request [on GitHub](https://github.com/daattali/addinslist#readme) to add it to the list. 
 
