@@ -73,4 +73,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | strcode | Insert three levels of code block separators | [strcode](https://github.com/lorenzwalthert/strcode) | :x: | [Lorenz Walthert](http://lorenzwalthert.github.io/) | [Demo GIF](https://raw.githubusercontent.com/lorenzwalthert/strcode/master/man/demo/demo_strcode_v0.1.0.gif) | |
 | datasets.load | Loading datasets from all installed packages | [datasets.load](https://github.com/bquast/datasets.load) | :white_check_mark: | [Bastiaan Quast](http://qua.st/) | [Demo Video](https://www.youtube.com/watch?v=dl_bYlDLydI) | |
 | testthis | Add hotkeys for menial tasks testthat | [testthis](https://bitbucket.org/s_fleck/testthis) | :x: | |  | |
-|typeStringsGadget | Type strings unencumbered | [typeStringsGadget](https://github.com/daranzolin/typeStringsGadget) | :x: | [David Ranzolin](http://daranzolin.github.io) | | |
+| typeStringsGadget | Type strings unencumbered | [typeStringsGadget](https://github.com/daranzolin/typeStringsGadget) | :x: | [David Ranzolin](http://daranzolin.github.io) | | |
