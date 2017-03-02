@@ -75,3 +75,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | testthis | Add hotkeys for menial tasks testthat | [testthis](https://bitbucket.org/s_fleck/testthis) | :x: | |  | |
 | typeStringsGadget | Type strings unencumbered | [typeStringsGadget](https://github.com/daranzolin/typeStringsGadget) | :x: | [David Ranzolin](http://daranzolin.github.io) | | | 
 | splitChunk | Split code chunk in R Markdown | [splitChunk](https://github.com/LudvigOlsen/splitChunk) | :x: | [Ludvig R Olsen](http://ludvigolsen.dk/?lang=en) | | |
+| insertImage | Insert image into R Markdown with file chooser. Copy image file to project. | [insertImage](https://github.com/LudvigOlsen/insertImage) | :x: | [Ludvig R Olsen](http://ludvigolsen.dk/?lang=en) | | |
