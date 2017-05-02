@@ -1,0 +1,4 @@
+Name: Browse RStudio addins
+Description: Discover and install useful RStudio addins
+Binding: addinslistAddin
+Interactive: true
