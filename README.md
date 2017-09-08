@@ -82,4 +82,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | ggedit | Reproducible layer, scale and theme editing for ggplot2 | [ggedit](https://github.com/metrumresearchgroup/ggedit) | :white_check_mark: | [Jonathan Sidi](https://github.com/metrumresearchgroup/ggedit) | [Youtube Clip](https://www.youtube.com/watch?v=693XhHt8fug) | |
 | SeaClass | An interactive R GUI for classification problems | [SeaClass](https://github.com/ChrisDienes/SeaClass) | :x: | [Chris Dienes](https://github.com/ChrisDienes) | [Screenshots](https://github.com/ChrisDienes/SeaClass/blob/master/screen_shots.png) | |
 | rdoxygen | Create doxygen documentation for source code | [rdoxygen](https://github.com/nevrome/rdoxygen) | :white_check_mark: | [Clemens Schmid](https://github.com/nevrome) | | |
-
+| remedy | RStudio Addins to Simplify Markdown Writing | [remedy](https://github.com/ThinkR-open/remedy) | :x: | [ThinkR](https://thinkr.fr/) | [How it works](https://github.com/ThinkR-open/remedy/blob/master/README.md) | |
