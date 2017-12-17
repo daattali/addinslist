@@ -86,4 +86,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | styler | RStudio Addin to provide non-invasive pretty-printing of R source code while adhering to the tidyverse formatting rules. | [styler](https://github.com/r-lib/styler) | :x: | [R infrastructure](https://github.com/r-lib) | [Demo gif](https://raw.githubusercontent.com/lorenzwalthert/some_raw_data/master/styler_0.1.gif) | |
 | CRANsearcher | RStudio addin to search CRAN packages titles and descriptions | [CRANsearcher](https://github.com/RhoInc/CRANsearcher) | :white_check_mark: | [Rho Inc](https://github.com/RhoInc) | | |
 | TODOr | Finds all TODO, FIXME, CHANGED etc. comments in your project and shows them as markers. | [TODOr](https://github.com/dokato/todor) | :x: | [Dominik Krzemiński](https://github.com/dokato) | | |
-| straddin | Peek at objects with a keystroke. | [straddin](https://github.com/famuvie/straddin) | :x: | [Facundo Muñoz](https://github.com/famuvie) | | |
+| straddin | Peek at objects with a keystroke. | [straddin](https://github.com/famuvie/straddin) | :x: | [Facundo Munoz](https://github.com/famuvie) | | |
