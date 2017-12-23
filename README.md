@@ -87,3 +87,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | CRANsearcher | RStudio addin to search CRAN packages titles and descriptions | [CRANsearcher](https://github.com/RhoInc/CRANsearcher) | :white_check_mark: | [Rho Inc](https://github.com/RhoInc) | | |
 | TODOr | Finds all TODO, FIXME, CHANGED etc. comments in your project and shows them as markers. | [TODOr](https://github.com/dokato/todor) | :x: | [Dominik Krzemiński](https://github.com/dokato) | | |
 | straddin | Peek at objects with a keystroke. | [straddin](https://github.com/famuvie/straddin) | :x: | [Facundo Munoz](https://github.com/famuvie) | | |
+| extraInserts | Insert various (pipe) operators (currently `->` and `%<>%`) | [extraInserts](https://github.com/konradedgar/extraInserts) | :x: | [Konrad Zdeb](https://github.com/konradedgar) | | |
