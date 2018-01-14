@@ -88,4 +88,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | TODOr | Finds all TODO, FIXME, CHANGED etc. comments in your project and shows them as markers. | [TODOr](https://github.com/dokato/todor) | :x: | [Dominik Krzemiński](https://github.com/dokato) | | |
 | straddin | Peek at objects with a keystroke. | [straddin](https://github.com/famuvie/straddin) | :x: | [Facundo Munoz](https://github.com/famuvie) | | |
 | extraInserts | Insert various (pipe) operators | [extraInserts](https://github.com/konradedgar/extraInserts) | :x: | [Konrad Zdeb](https://github.com/konradedgar) | | |
-| rsam | Manage installed RStudio addins keyboard shortcuts and IDE dropdown list | [rsam](https://github.com/yonicd/rsam) | :x: | [Jonathan Sidi](https://yonicd.netlify.com/) | [youtube](https://www.youtube.com/watch?v=-XZWv7CJrs8)|Writes to Disk|
+| rsam | Manage installed RStudio addins keyboard shortcuts and IDE dropdown list | [rsam](https://github.com/yonicd/rsam) | :x: | [Jonathan Sidi](https://yonicd.netlify.com/) | [YouTube](https://www.youtube.com/watch?v=-XZWv7CJrs8) | Writes to Disk |
