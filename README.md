@@ -95,3 +95,7 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | beautifyR | Format RMarkdown tables beautifully | [beautifyR](https://github.com/mwip/beautifyR) | :x: | [Matthias Weigand](https://github.com/mwip/) | [Demo GIF](https://github.com/mwip/beautifyR#beautifyr-in-action) | | 
 | ermoji | Search and Copy Emoji | [ermoji](https://github.com/gadenbuie/ermoji) | :x: | [Garrick Aden-Buie](https://www.garrickadenbuie.com) | [Screenshots](https://github.com/gadenbuie/ermoji/#usage) | |
 | shinyExams | RStudio addin to create exercises | [shinyExams](https://github.com/flaviobarros/shinyExams) | :x: | [Flavio Barros](https://www.rmining.net) | [Demo GIF](https://github.com/flaviobarros/shinyExams#usage) | | 
+| prefixer | Prefix function with their namespace | [prefixer](https://github.com/dreamRs/prefixer) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
+| addinit | Initialize an 'RStudio' Project | [addinit](https://github.com/dreamRs/addinit) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
+| viewxl | Open data.frame(s) in Excel | [viewxl](https://github.com/dreamRs/viewxl) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
+| esquisse | Make plots with ggplot2 | [esquisse](https://github.com/dreamRs/esquisse) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
