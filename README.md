@@ -99,3 +99,5 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | addinit | Initialize an 'RStudio' Project | [addinit](https://github.com/dreamRs/addinit) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
 | viewxl | Open data.frame(s) in Excel | [viewxl](https://github.com/dreamRs/viewxl) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
 | esquisse | Make plots with ggplot2 | [esquisse](https://github.com/dreamRs/esquisse) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
+| Enhanced View | Enhanced data viewer, allows column selection and filtering | [viewenhance](https://github.com/kieranjmartin/viewenhance) | :x: | [Kieran Martin](https://github.com/kieranjmartin) | | | 
+| get_fn_args | Reads highlighted default values into console, translating commas to semi colons |  [getfunctionargs](https://github.com/kieranjmartin/getfunctionargs) | :x: | [Kieran Martin](https://github.com/kieranjmartin) | | | 
