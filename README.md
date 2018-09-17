@@ -101,3 +101,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | esquisse | Make plots with ggplot2 | [esquisse](https://github.com/dreamRs/esquisse) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
 | Enhanced View | Enhanced data viewer, allows column selection and filtering | [viewenhance](https://github.com/kieranjmartin/viewenhance) | :x: | [Kieran Martin](https://github.com/kieranjmartin) | | | 
 | get_fn_args | Reads highlighted default values into console, translating commas to semi colons |  [getfunctionargs](https://github.com/kieranjmartin/getfunctionargs) | :x: | [Kieran Martin](https://github.com/kieranjmartin) | | | 
+| Escape strings | Convert non-ASCII strings to a portable format | [uniscape](https://github.com/mvkorpel/uniscape) | :x: | [Mikko Korpela](https://github.com/mvkorpel) | [Screenshot](https://raw.githubusercontent.com/mvkorpel/uniscape/master/media/escape_strings.png) | | 
