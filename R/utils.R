@@ -27,8 +27,10 @@ update_addins_file <- function() {
   mdfile <- get_md_file()
   htmlfile <- get_html_file()
   url <- "https://raw.githubusercontent.com/daattali/rstudio-addins/master/README.md"
-  curl::curl_download(url, destfile = mdfile)
-  rmarkdown::pandoc_convert(mdfile, to = "html", output = htmlfile)
+  writeLines("% addinslist", mdfile)
+  curl::curl_download(url, destfile = mdfile, mode = "ab")
+  rmarkdown::pandoc_convert(mdfile, to = "html", output = htmlfile,
+                            options = "-s")
 }
 
 # Assuming the addins list file exists, parse the markdown table and
