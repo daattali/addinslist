@@ -1,6 +1,6 @@
 Package: addinslist 
 Title: Discover and Install Useful RStudio Addins
-Version: 0.2
+Version: 0.3
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
 Description: Browse through a continuously updated list of existing RStudio 
@@ -11,7 +11,7 @@ Depends:
     R (>= 3.1.0)
 Imports:
     curl,
-    devtools,
+    remotes,
     DT (>= 0.1),
     miniUI (>= 0.1),
     shiny (>= 0.13.2),
@@ -23,4 +23,4 @@ Imports:
     xml2 (>= 0.1.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.1

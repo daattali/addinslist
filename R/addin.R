@@ -5,7 +5,7 @@
 #' install/uninstall the corresponding package of each addin. This addin can be
 #' invoked from RStudio's "Addins" menu.
 #' @export
-#' @examples 
+#' @examples
 #' if (interactive()) {
 #'   addinslistAddin()
 #' }
@@ -14,7 +14,7 @@ addinslistAddin <- function() {
   resourcePath <- system.file("gadgets", "addinslist", package = "addinslist")
   system.file("lib", "sweetalert-1.0.1", package = "addinslist")
   addResourcePath("addinslistres", resourcePath)
-  
+
   ui <- miniUI::miniPage(
     shinyjs::useShinyjs(),
     shinyjs::extendShinyjs(
@@ -58,28 +58,28 @@ addinslistAddin <- function() {
       DT::dataTableOutput("addinstable")
     )
   )
-  
+
   server <- function(input, output, session) {
-    
+
     # values used throughout the app
     values <- reactiveValues(addins_data = NULL, last_refresh = NULL,
                              install_pkg = NULL, uninstall_pkg = NULL)
-    
+
     # Function to update the addins list and the corresponding reactive values
     update_addins_list_values <- function(...) {
       update_addins_list(...)
       values$addins_data <- .addinsrepo_globals$addins_list
       values$last_refresh <- .addinsrepo_globals$last_refresh
     }
-    
+
     # Function to refresh the addins list and show the user a loading message
     refresh_list <- function() {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", "Refreshing addins list...")
       update_addins_list_values(force = TRUE)
       shinyjs::hide("installing-overlay")
-    }     
-    
+    }
+
     # When the app starts, ensure the data is up-to-date
     if (is_addins_file_outdated()) {
       refresh_list()
@@ -87,7 +87,7 @@ addinslistAddin <- function() {
       update_addins_list_values()
     }
 
-    
+
     # Show when the list was last updated
     output$updated_time <- renderText({
       if (!is.null(values$last_refresh)) {
@@ -98,12 +98,12 @@ addinslistAddin <- function() {
         )
       }
     })
-  
+
     # User wants to refresh the list of addins
     observeEvent(input$refresh, {
       refresh_list()
     })
-  
+
     # JS sent a message to Shiny to install/uninstall a package (after user confirm)
     observeEvent(input$install, {
       values$install_pkg <- input$install[1]
@@ -111,24 +111,24 @@ addinslistAddin <- function() {
     observeEvent(input$uninstall, {
       values$uninstall_pkg <- input$uninstall[1]
     })
-    
+
     # Install/uninstall a package
     observeEvent(values$install_pkg, {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", paste0("Installing ", values$install_pkg, "..."))
-      
+
       # Figure out which package to install and attempt to install it
       idx <- which(values$addins_data$internal_pkgname == values$install_pkg)[1]
       tryCatch({
         if(values$addins_data[idx, .addinsrepo_globals$cranColumnId] == TRUE && (input$download_from == "cran")) {
           utils::install.packages(values$install_pkg)
         } else {
-          devtools::install_github(values$addins_data$internal_github_repo[idx])
+          remotes::install_github(values$addins_data$internal_github_repo[idx], upgrade = "never")
         }
       }, error = function(err) {
         shinyjs::js$swal(title = "Error", text = err$message, type = "error")
       })
-      
+
       shinyjs::hide("installing-overlay")
       values$install_pkg <- NULL
       update_addins_list_values()
@@ -136,16 +136,16 @@ addinslistAddin <- function() {
     observeEvent(values$uninstall_pkg, {
       shinyjs::show("installing-overlay")
       shinyjs::html("overlay-text", paste0("Uninstalling ", values$uninstall_pkg, "..."))
-      
+
       # Figure out which package to uninstall and do it
       idx <- which(values$addins_data$internal_pkgname == values$uninstall_pkg)[1]
       utils::remove.packages(values$addins_data[idx, 'internal_pkgname'])
-      
+
       values$uninstall_pkg <- NULL
       shinyjs::hide("installing-overlay")
       update_addins_list_values()
     })
-    
+
     # User clicked on a row in the table; need to install/uninstall based on selection
     observeEvent(input$rowclick, {
       pkg <- input$rowclick[1]
@@ -158,8 +158,8 @@ addinslistAddin <- function() {
         shinyjs::js$swal(title = "", text = "Cannot uninstall addinslist, it is required for the current app to work",
                          type = "info")
         return()
-      }   
-      
+      }
+
       # Figure out which package was selected and ask for confirmation/do it
       idx <- which(values$addins_data$internal_pkgname == pkg)[1]
       if (input$confirmation) {
@@ -176,7 +176,7 @@ addinslistAddin <- function() {
         }
       }
     })
-    
+
     # Render the table
     output$addinstable <- DT::renderDataTable({
       DT::datatable(
@@ -231,7 +231,7 @@ addinslistAddin <- function() {
       )
     })
   }
-  
+
   # Run the addin
   app <- shinyApp(ui = ui, server = server)
   viewer <- dialogViewer("Discover and install useful RStudio addins", width = 1200, height = 900)
