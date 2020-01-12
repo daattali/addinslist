@@ -4,7 +4,6 @@
 Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://travis-ci.org/daattali/addinslist)
 [![CRAN
 version](http://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
-[![saythanks](http://i.imgur.com/L88apDa.png)](https://saythanks.io/to/daattali)
 
 > *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under the MIT license.*
 
