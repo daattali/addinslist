@@ -12,19 +12,18 @@
 #' @import shiny
 addinslistAddin <- function() {
   resourcePath <- system.file("gadgets", "addinslist", package = "addinslist")
-  system.file("lib", "sweetalert-1.0.1", package = "addinslist")
   addResourcePath("addinslistres", resourcePath)
 
   ui <- miniUI::miniPage(
     shinyjs::useShinyjs(),
     shinyjs::extendShinyjs(
-      script = file.path(resourcePath, "js", "shinyjs-funcs.js"),
+      script = file.path("addinslistres", "js", "shinyjs-funcs.js"),
       functions = c("swal", "confirmation")
     ),
     tags$head(
-      includeScript(file.path(resourcePath, "lib", "sweetalert-1.0.1", "sweetalert.min.js")),
-      includeCSS(file.path(resourcePath, "lib", "sweetalert-1.0.1", "sweetalert.min.css")),
-      includeCSS(file.path(resourcePath, "css", "app.css"))
+      tags$script(src = file.path("addinslistres", "lib", "sweetalert-1.0.1", "sweetalert.min.js")),
+      tags$link(rel="stylesheet", href = file.path("addinslistres", "lib", "sweetalert-1.0.1", "sweetalert.min.css")),
+      tags$link(rel="stylesheet", href = file.path("addinslistres", "css", "app.css"))
     ),
     miniUI::miniContentPanel(
       padding = 0,
