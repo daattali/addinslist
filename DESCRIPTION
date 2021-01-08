@@ -1,8 +1,10 @@
 Package: addinslist 
 Title: Discover and Install Useful RStudio Addins
 Version: 0.3.9000
-Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
-    role = c("aut", "cre"))
+Authors@R: person("Dean", "Attali",
+    email = "daattali@gmail.com",
+    role = c("aut", "cre"),
+    comment= c(ORCID="0000-0002-5645-3493"))
 Description: Browse through a continuously updated list of existing RStudio 
     addins and install/uninstall their corresponding packages.
 URL: https://github.com/daattali/addinslist
@@ -23,4 +25,5 @@ Imports:
     xml2 (>= 0.1.2)
 License: MIT + file LICENSE
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
+Encoding: UTF-8
