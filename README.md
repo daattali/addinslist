@@ -17,6 +17,8 @@ The `addinslist` package solves that problem in two ways:
 
 ![Addins menu](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addins-menu.png)
 
+---
+
 **Need Shiny help? [I’m available for
 consulting](https://attalitech.com/).**<br/> **If you find
 {addinslist} useful, please consider [supporting my
@@ -37,7 +39,7 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 
 > There are no sponsors yet
 
-[Become the first sponsor for {shinyjs} and unlock special rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+[Become the first sponsor for {addinslist} and unlock special rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="addinslist-table">List of addins</h2>
 
