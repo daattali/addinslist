@@ -30,7 +30,7 @@ update_addins_file <- function() {
   writeLines("% addinslist", mdfile)
   curl::curl_download(url, destfile = mdfile, mode = "ab")
   rmarkdown::pandoc_convert(mdfile, to = "html", output = htmlfile,
-                            options = "-s")
+                            options = c("-s", "--metadata", 'pagetitle="addins"'))
 }
 
 # Assuming the addins list file exists, parse the markdown table and
@@ -39,20 +39,20 @@ update_addins_list_helper <- function() {
   htmlfile <- get_html_file()
   lastrefresh <- file.mtime(htmlfile)
   .addinsrepo_globals$last_refresh <- lastrefresh
-  
+
   html <- xml2::read_html(htmlfile)
   headerNames <- xml2::xml_text(xml2::xml_find_all(html, "//thead//th"))
-  
+
   cranColumnId <- which(grepl("cran", headerNames, ignore.case = TRUE))
   packageColumnId <- which(grepl("package", headerNames, ignore.case = TRUE))
   .addinsrepo_globals$headerNames <- headerNames
   .addinsrepo_globals$cranColumnId <- cranColumnId
   .addinsrepo_globals$packageColumnId <- packageColumnId
-  
+
   rows <- xml2::xml_find_all(html, "//tbody/tr")
-  
+
   cells <- lapply(rows, function(x){ rvest::html_nodes(x, xpath = ".//td|.//th") })
-  
+
   installed_pkgs <- rownames(utils::installed.packages(noCache = TRUE))
   out <- matrix(NA_character_, nrow = length(rows), ncol = length(headerNames) + 3)
   colnames(out) <- c(headerNames, "internal_pkgname", "internal_github_repo",
@@ -63,7 +63,7 @@ update_addins_list_helper <- function() {
       paste(as.character(xml2::xml_contents(x)), collapse = " ")
     })
     values <- unlist(values)
-    
+
     if (values[cranColumnId] == ":x:") {
       oncran <- FALSE
     } else if (values[cranColumnId] == ":white_check_mark:") {
@@ -74,22 +74,22 @@ update_addins_list_helper <- function() {
     values[cranColumnId] <- oncran
     pkg <- xml2::xml_text(row[[packageColumnId]])
     pkg_url <- xml2::xml_attr(xml2::xml_find_first(row[[packageColumnId]], "a"), "href")
-    github <- gsub("(.*)(github.com/)([^/]+)/([^/@#]+)(.*)", "\\3/\\4", pkg_url ) 
+    github <- gsub("(.*)(github.com/)([^/]+)/([^/@#]+)(.*)", "\\3/\\4", pkg_url )
     is_installed <- pkg %in% installed_pkgs
-    
+
     values <- c(values, pkg, github, is_installed)
     out[i, ] <- values
   }
   out <- as.data.frame(out, stringsAsFactors = FALSE)
   out$internal_installed <- as.logical(out$internal_installed)
-  
+
   .addinsrepo_globals$addins_list <- out
-  
+
   packageNameColumnId <- which(colnames(out) == "internal_pkgname")
   .addinsrepo_globals$packageNameColumnId <- packageNameColumnId
 }
 
-# When the list objects already exist, sometimes we just need to update 
+# When the list objects already exist, sometimes we just need to update
 # whether or not each package is installed on our system
 update_addins_installed_field <- function() {
   installed_pkgs <- rownames(utils::installed.packages(noCache = TRUE))
@@ -100,11 +100,11 @@ update_addins_installed_field <- function() {
 # Return TRUE if a new addins list needs to be downloaded
 is_addins_file_outdated <- function() {
   htmlfile <- get_html_file()
-  
+
   if (!file.exists(htmlfile)) {
     return(TRUE)
   }
-  
+
   lastrefresh <- file.mtime(htmlfile)
   return(is_expired(lastrefresh))
 }
