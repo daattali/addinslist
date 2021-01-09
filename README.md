@@ -1,7 +1,7 @@
 # Discover and install useful RStudio addins
 
-[![Build
-Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://travis-ci.org/daattali/addinslist)
+[![R Build
+Status](https://github.com/daattali/addinslist/workflows/R-CMD-check/badge.svg)](https://github.com/daattali/addinslist/actions)
 [![CRAN
 version](https://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
 
