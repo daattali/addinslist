@@ -3,9 +3,9 @@
 [![Build
 Status](https://travis-ci.org/daattali/addinslist.svg?branch=master)](https://travis-ci.org/daattali/addinslist)
 [![CRAN
-version](http://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
+version](https://www.r-pkg.org/badges/version/addinslist)](https://cran.r-project.org/package=addinslist)
 
-> *Copyright 2016 [Dean Attali](http://deanattali.com). Licensed under the MIT license.*
+> Created by [Dean Attali](https://deanattali.com)
 
 [RStudio addins](https://rstudio.github.io/rstudioaddins/) were released in early 2016 to provide anyone with the ability to add "extensions" to RStudio. This feature has quickly become popular, but discoverability was a problem: **there's just no easy way to know what addins exist.**
 
@@ -16,6 +16,28 @@ The `addinslist` package solves that problem in two ways:
 - After installing this package (`install.packages('addinslist')`), your RStudio will get populated with a new addin called "Browse RStudio addins". This addin allows you to interactively browse through the list of addins, see which ones you already have installed, and let you install/uninstall the corresponding package of each addin. The following image shows how to access this "addin of addins" in RStudio.
 
 ![Addins menu](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addins-menu.png)
+
+**Need Shiny help? [I’m available for
+consulting](https://attalitech.com/).**<br/> **If you find
+{addinslist} useful, please consider [supporting my
+work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
+
+<p align="center">
+
+<a style="display: inline-block;" href="https://github.com/sponsors/daattali">
+<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
+
+<a style="display: inline-block;" href="https://paypal.me/daattali">
+<img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
+</a>
+
+</p>
+
+<h2 id="sponsors">Sponsors 🏆</h2>
+
+> There are no sponsors yet
+
+[Become the first sponsor for {shinyjs} and unlock special rewards\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="addinslist-table">List of addins</h2>
 
@@ -32,9 +54,9 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | Assign default values | 2016-03-30 | Set function arguments in selection to their default values | [jadd](https://github.com/jennybc/jadd) | :x: | [Jenny Bryan](https://github.com/jennybc) | [Demo GIF](https://raw.githubusercontent.com/jennybc/jadd/master/internal/assign_defaults.gif) | |
 | assignparams | 2016-06-29 | Evaluate function parameter in global environment | [assignparams](https://github.com/petermeissner/assignparams) | :x: | [Peter Meissner](https://github.com/petermeissner) | [DemoVideo](https://raw.githubusercontent.com/petermeissner/assignparams/master/extra/assign_params.gif) | |
 | beautifyR | 2018-04-21 | Format RMarkdown tables beautifully | [beautifyR](https://github.com/mwip/beautifyR) | :x: | [Matthias Weigand](https://github.com/mwip/) | [Demo GIF](https://github.com/mwip/beautifyR#beautifyr-in-action) | | 
-| Browse RStudio addins | 2016-03-30 | Browse and install RStudio addins | [addinslist](https://github.com/daattali/addinslist) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addin.png) | |
+| Browse RStudio addins | 2016-03-30 | Browse and install RStudio addins | [addinslist](https://github.com/daattali/addinslist) | :white_check_mark: | [Dean Attali](https://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/addinslist/master/inst/media/addin.png) | |
 | Case converter | 2018-09-20 | Convert text cases to lower, upper, snake, camel cases | [caseconverter](https://github.com/strboul/caseconverter) | :x: | [strboul](https://github.com/strboul) | [Demo GIF](https://raw.githubusercontent.com/strboul/caseconverter/master/inst/media/caseconverter.gif) | |
-| Colour picker | 2016-03-30 | Lets you easily select colours | [colourpicker](https://github.com/daattali/colourpicker) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/colourpickerscrnshot.png), [Demo video](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/colourPickerGadget.gif) | |
+| Colour picker | 2016-03-30 | Lets you easily select colours | [colourpicker](https://github.com/daattali/colourpicker) | :white_check_mark: | [Dean Attali](https://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/colourpickerscrnshot.png), [Demo video](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/colourPickerGadget.gif) | |
 | compareAreas | 2018-11-26 | Compare areas across square meters, kilometers, feet, miles, and acres | [compareAreas](https://github.com/daranzolin/compareAreas) | :x: | [David Ranzolin](https://daranzolin.github.io/) | | |
 | compareWith | 2019-08-28 | Enhanced diff and merge tools for RStudio | [compareWith](https://github.com/miraisolutions/compareWith#readme) | :x: | [Mirai Solutions](https://mirai-solutions.ch) | [Blog post](https://mirai-solutions.ch/news/2019/07/04/compareWith) | |
 | Convert slash | 2016-05-10 | Reverse slashes (eg in file paths) | [snippetsaddin](https://github.com/sfr/RStudio-Addin-Snippets) | :x: | [Juraj Sofranko](https://github.com/sfr) | | Clipboard is Windows only |
@@ -53,7 +75,7 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | get_fn_args | 2018-07-12 | Reads highlighted default values into console, translating commas to semi colons |  [getfunctionargs](https://github.com/kieranjmartin/getfunctionargs) | :x: | [Kieran Martin](https://github.com/kieranjmartin) | | | 
 | ggedit | 2017-05-04 | Reproducible layer, scale and theme editing for ggplot2 | [ggedit](https://github.com/metrumresearchgroup/ggedit) | :white_check_mark: | [Jonathan Sidi](https://yonicd.netlify.com/) | [Youtube Clip](https://www.youtube.com/watch?v=693XhHt8fug) | |
 | ggplot Theme Assist | 2016-03-30 | Customize your ggplot theme | [ggThemeAssist](https://github.com/calligross/ggthemeassist) | :white_check_mark: | [Calli Gross](https://github.com/calligross) | [Demo GIF](https://raw.githubusercontent.com/calligross/ggthemeassist/master/examples/ggThemeAssist2.gif) | |
-| ggplot2 Marginal Plots | 2016-03-30 | Add marginal plots to ggplot2 | [ggExtra](https://github.com/daattali/ggExtra) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/ggExtra/master/inst/img/ggmarginal-gadget.png) | |
+| ggplot2 Marginal Plots | 2016-03-30 | Add marginal plots to ggplot2 | [ggExtra](https://github.com/daattali/ggExtra) | :white_check_mark: | [Dean Attali](https://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/ggExtra/master/inst/img/ggmarginal-gadget.png) | |
 | gitgadget | 2016-09-16 | Version Control and Assignment Management using Git | [gitgadget](https://github.com/vnijs/gitgadget) | :white_check_mark: | [Vincent Nijs](https://github.com/vnijs) | | |
 | Google API Auth | 2016-05-03 | Authenticate with Google APIs | [googleAuthR](https://github.com/MarkEdmondson1234/googleAuthR) | :white_check_mark: | [Mark Edmondson](https://github.com/MarkEdmondson1234) | | |
 | Gotta Read 'Em All | 2016-05-10 | RStudio Add-In to interactively read ALL the data into R| [GREA](https://github.com/Stan125/GREA) | :x: | [Stanislaus Stadlmann](https://github.com/Stan125) | | |
@@ -79,7 +101,7 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | namebrowser | 2016-08-18 | Browse or search all installed packages for function names, insert library(pkg) or pkg:: prefix | [namebrowser](https://github.com/dracodoc/namebrowser) | :x: | [dracodoc](https://github.com/dracodoc) | | |
 | objectremover | 2019-08-04 | Remove objects from the Global environment based on text patterns and object type | [objectremover](https://github.com/alan-y/objectremover) | :white_check_mark: | [Alan Yeung](https://github.com/alan-y) | [Demo gif](https://raw.githubusercontent.com/alan-y/objectremover/master/inst/img/objectremover_demo.gif) | |
 | Path To Clipboard | 2020-01-02 | Copy the active document's absolute path to clipboard. | [pathToClip](https://github.com/dcomtois/pathToClip) | :x: | [Dominic Comtois](https://github.com/dcomtois) | [Demo Gif](https://github.com/dcomtois/pathToClip/blob/ca9f97aa6d7ed65ee51e70ba5246e72cf904df6f/inst/media/pathToClip_demo.gif) | |
-| Plot Colour Helper | 2016-03-30 | Interactively pick colours to use in your plot | [colourpicker](https://github.com/daattali/colourpicker) | :white_check_mark: | [Dean Attali](http://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/plothelper-demo.png), [Demo video](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/plothelper-demo.gif) | |
+| Plot Colour Helper | 2016-03-30 | Interactively pick colours to use in your plot | [colourpicker](https://github.com/daattali/colourpicker) | :white_check_mark: | [Dean Attali](https://deanattali.com/) | [Screenshot](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/plothelper-demo.png), [Demo video](https://raw.githubusercontent.com/daattali/colourpicker/master/inst/img/plothelper-demo.gif) | |
 | prefixer | 2018-06-06 | Prefix function with their namespace | [prefixer](https://github.com/dreamRs/prefixer) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
 | Preview R-markdown Book | 2016-04-25 | Run bookdown's serve_book() to live preview a book | [bookdown](https://github.com/rstudio/bookdown) |  :white_check_mark: | [RStudio](https://github.com/rstudio/) | | |
 | QRAGadget | 2016-06-28 | A Shiny Gadget for Interactive QRA Visualizations | [QRAGadget](https://github.com/paulgovan/QRAGadget) | :white_check_mark: | [Paul Govan](https://github.com/paulgovan) | [Screenshot](https://github.com/paulgovan/QRAGadget/blob/master/inst/images/map.PNG?raw=true) | |
