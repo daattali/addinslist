@@ -1,4 +1,4 @@
-# Unreleased version
+# addinslist 0.4.0 (2021-01-08)
 
 - Fix bug: addins weren't able to get installed in modern browsers (#117)
 
