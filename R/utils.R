@@ -115,7 +115,7 @@ is_expired <- function(time) {
 }
 
 get_files_path <- function() {
-  rappdirs::user_data_dir("addinsrepo", "daattali")
+  path.expand(rappdirs::user_data_dir("addinsrepo", "daattali"))
 }
 
 get_html_file <- function() {

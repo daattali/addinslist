@@ -1,3 +1,7 @@
+# addinslist 0.5.0 (TBD)
+
+- Fix bug: on some MacOS systems the addins was crashing because of invalid path names (#124) 
+
 # addinslist 0.4.0 (2021-01-08)
 
 - Fix bug: addins weren't able to get installed in modern browsers (#117)
