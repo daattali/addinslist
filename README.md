@@ -111,6 +111,7 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | prefixer | Prefix function with their namespace | [prefixer](https://github.com/dreamRs/prefixer) | :x: | [dreamRs](https://github.com/dreamRs) | | | 
 | Preview R-markdown Book | Run bookdown's serve_book() to live preview a book | [bookdown](https://github.com/rstudio/bookdown) |  :white_check_mark: | [RStudio](https://github.com/rstudio/) | | |
 | QRAGadget | A Shiny Gadget for Interactive QRA Visualizations | [QRAGadget](https://github.com/paulgovan/QRAGadget) | :white_check_mark: | [Paul Govan](https://github.com/paulgovan) | [Screenshot](https://github.com/paulgovan/QRAGadget/blob/master/inst/images/map.PNG?raw=true) | |
+| quartostamp | Insert pre-written divs and classes into your Quarto documents. | [quartostamp](https://github.com/matt-dray/quartostamp) | :x: | [Matt Dray](https://github.com/matt-dray) | [Website](https://matt-dray.github.io/quartostamp/) | |
 | quickview | Quickly inspect your data in a View tab of RStudio | [quickview](https://github.com/fkeck/quickview) | :x: | [Francois Keck](https://github.com/fkeck) | [Demo gif](https://raw.githubusercontent.com/fkeck/quickview/master/inst/screencast_qv.gif) | |
 | r6methods | Generate methods for R6 classes | [r6methods](https://github.com/jakubsob/r6methods) | :white_check_mark: | [Jakub Sobolewski](https://github.com/jakubsob) | | |
 | radiant | A Shiny interface for business analytics in R | [radiant](https://github.com/radiant-rstats/radiant) | :x: | [Vincent Nijs](http://rady.ucsd.edu/faculty/directory/nijs) | [Documentation](https://radiant-rstats.github.io/docs) | |
@@ -130,6 +131,7 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | shinyExams | RStudio addin to create exercises | [shinyExams](https://github.com/flaviobarros/shinyExams) | :x: | | [Demo GIF](https://github.com/flaviobarros/shinyExams#usage) | | 
 | ShinyQuickStarter | Build Shiny Apps per Drag & Drop | [ShinyQuickStarter](https://github.com/cran/ShinyQuickStarter) | :white_check_mark: | [Leon Binder](https://github.com/lbinder357) | | | 
 | Snake caser | Convert a character string to snake_case | [snakecaser](https://github.com/benmarwick/snakecaser) | :x: | [Ben Marwick](https://github.com/benmarwick) | | | 
+| snorkel | Insert {roxygen2} formatting to your function documentation. | [snorkel](https://github.com/matt-dray/snorkel) | :x: | [Matt Dray](https://github.com/matt-dray) | [Website](https://matt-dray.github.io/snorkel/) | |
 | sortLines | Sort selected lines in the editor with a number-smart algorithm. | [sortLines](https://github.com/dcomtois/sortLines) | :x: | [Dominic Comtois](https://github.com/dcomtois) | [Demo Gif](https://raw.githubusercontent.com/dcomtois/sortLines/master/inst/media/sortLinesDemo.gif) | |
 | splitChunk | Split code chunk in R Markdown | [splitChunk](https://github.com/LudvigOlsen/splitChunk) | :x: | [Ludvig R Olsen](http://ludvigolsen.dk/?lang=en) | | |
 | straddin | Peek at objects with a keystroke. | [straddin](https://github.com/famuvie/straddin) | :x: | [Facundo Munoz](https://github.com/famuvie) | | |
