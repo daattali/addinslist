@@ -150,3 +150,4 @@ If you made a useful RStudio addin, feel free to make a pull request [on GitHub]
 | wellspell.addin | Quick spellcheck with hunspell | [wellspell.addin](https://github.com/nevrome/wellspell.addin) | :x: | [Clemens Schmid](https://github.com/nevrome) | | |
 | Word count add-in | Count non-code words in Rmd documents | [wordcountaddin](https://github.com/benmarwick/wordcountaddin) |  :x: | [Ben Marwick](https://github.com/benmarwick) | | |
 | Wrap Rmd | Wrap selected R Markdown text but don't insert lines breaks into inline R code | [WrapRmd](https://github.com/tjmahr/WrapRmd) | :x: | [TJ Mahr](http://tjmahr.com/) | | |
+| hippie | Hippie Code Completion in RStudio | [hippie](https://github.com/crew102/hippie) | :white_check_mark: | [Chris Baker](https://github.com/crew102) |[Demo gif](https://github.com/crew102/hippie/blob/main/man/figures/overview.gif) | |
