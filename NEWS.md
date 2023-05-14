@@ -1,4 +1,4 @@
-# addinslist 0.5.0 (TBD)
+# addinslist 0.5.0 (2023-05-14)
 
 - Fix bug: on some MacOS systems the addins was crashing because of invalid path names (#124) 
 

@@ -1,6 +1,6 @@
 Package: addinslist 
 Title: Discover and Install Useful RStudio Addins
-Version: 0.4.0.9000
+Version: 0.5.0
 Authors@R: person("Dean", "Attali",
     email = "daattali@gmail.com",
     role = c("aut", "cre"),
@@ -24,6 +24,5 @@ Imports:
     utils,
     xml2 (>= 0.1.2)
 License: MIT + file LICENSE
-LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
